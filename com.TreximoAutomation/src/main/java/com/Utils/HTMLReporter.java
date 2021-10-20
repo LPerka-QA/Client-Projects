@@ -97,7 +97,7 @@ public class HTMLReporter {
 		try {
 
 			String timeStamp = customDate();
-			String snapshotpath = "C:\\Users\\parigue\\eclipse-workspace\\CH_MGS_App\\ScreenShots" + "\\"
+			String snapshotpath = System.getProperty("user.dir")+ "\\Resources\\ScreenShots" + "\\"
 					+ screenShotName + timeStamp + ".png";
 
 			File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

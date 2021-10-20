@@ -15,6 +15,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.Parameters;
 
 public class LaunchBrowser extends BasePages {
@@ -55,6 +56,12 @@ public class LaunchBrowser extends BasePages {
 			System.setProperty("webdriver.gecko.driver",
 					System.getProperty("user.dir") + "\\Resources\\GeckoDriver\\geckodriver.exe");
 			driver = new FirefoxDriver();
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		}
+		
+		if (browserName.equalsIgnoreCase("safari")) {		
+			
+			driver = new SafariDriver();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		}
 

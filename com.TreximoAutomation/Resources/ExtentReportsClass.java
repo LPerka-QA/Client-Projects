@@ -54,7 +54,7 @@ public class ExtentReportsClass {
 
 	@BeforeMethod
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver","C://AutomationFramework//Drivers//chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "/Resources/ChromeDriver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.google.com/");
