@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="GoClinical_AutomationTesting" duration-ms="104550" started-at="2021-10-20T10:34:27 IST" finished-at="2021-10-20T10:36:12 IST">
+  <suite name="GoClinical_AutomationTesting" duration-ms="60125" started-at="2021-10-23T20:07:50 IST" finished-at="2021-10-23T20:08:50 IST">
     <groups>
     </groups>
-    <test name="WorkOrder" duration-ms="104550" started-at="2021-10-20T10:34:27 IST" finished-at="2021-10-20T10:36:12 IST">
-      <class name="com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite">
-        <test-method status="PASS" signature="TestSetup(java.lang.String)[pri:0, instance:com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite@667a738]" name="TestSetup" is-config="true" duration-ms="6383" started-at="2021-10-20T10:34:27 IST" finished-at="2021-10-20T10:34:34 IST">
+    <test name="WorkOrder" duration-ms="60125" started-at="2021-10-23T20:07:50 IST" finished-at="2021-10-23T20:08:50 IST">
+      <class name="com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite2">
+        <test-method status="PASS" signature="TestSetup(java.lang.String)[pri:0, instance:com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite2@525f1e4e]" name="TestSetup" is-config="true" duration-ms="5176" started-at="2021-10-23T20:07:50 IST" finished-at="2021-10-23T20:07:55 IST">
           <params>
             <param index="0">
               <value>
@@ -18,23 +18,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestSetup -->
-        <test-method status="PASS" signature="AdminUserNewWorkOrder()[pri:0, instance:com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite@667a738]" name="AdminUserNewWorkOrder" duration-ms="28639" started-at="2021-10-20T10:34:34 IST" finished-at="2021-10-20T10:35:03 IST">
+        <test-method status="PASS" signature="AdminUserNewWorkOrder()[pri:0, instance:com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite2@525f1e4e]" name="AdminUserNewWorkOrder" duration-ms="54607" started-at="2021-10-23T20:07:55 IST" finished-at="2021-10-23T20:08:50 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AdminUserNewWorkOrder -->
-        <test-method status="PASS" signature="NurseUserMyWorkOrders()[pri:1, instance:com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite@667a738]" name="NurseUserMyWorkOrders" duration-ms="43242" started-at="2021-10-20T10:35:03 IST" finished-at="2021-10-20T10:35:46 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- NurseUserMyWorkOrders -->
-        <test-method status="PASS" signature="AdminUserReviewRecords()[pri:2, instance:com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite@667a738]" name="AdminUserReviewRecords" duration-ms="26104" started-at="2021-10-20T10:35:46 IST" finished-at="2021-10-20T10:36:12 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AdminUserReviewRecords -->
-        <test-method status="PASS" signature="CloseTest()[pri:0, instance:com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite@667a738]" name="CloseTest" is-config="true" duration-ms="156" started-at="2021-10-20T10:36:12 IST" finished-at="2021-10-20T10:36:12 IST">
+        <test-method status="PASS" signature="CloseTest()[pri:0, instance:com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite2@525f1e4e]" name="CloseTest" is-config="true" duration-ms="216" started-at="2021-10-23T20:08:50 IST" finished-at="2021-10-23T20:08:50 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CloseTest -->
-      </class> <!-- com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite -->
+      </class> <!-- com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite2 -->
     </test> <!-- WorkOrder -->
   </suite> <!-- GoClinical_AutomationTesting -->
 </testng-results>

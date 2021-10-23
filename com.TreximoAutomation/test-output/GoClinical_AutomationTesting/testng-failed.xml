@@ -4,15 +4,15 @@
   <test thread-count="5" name="WorkOrder(failed)">
     <parameter name="browserName" value="chrome"/>
     <classes>
-      <class name="com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite">
+      <class name="com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite2">
         <methods>
-          <include name="CloseTest"/>
-          <include name="AdminUserReviewRecords"/>
-          <include name="AdminUserNewWorkOrder"/>
           <include name="NurseUserMyWorkOrders"/>
+          <include name="AdminUserNewWorkOrder"/>
+          <include name="CloseTest"/>
           <include name="TestSetup"/>
+          <include name="AdminUserReviewRecords"/>
         </methods>
-      </class> <!-- com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite -->
+      </class> <!-- com.GoClinical_WorkOrder_ExecutionSuiteClasses.GoClinical_WorkOrder_AutomationTesting_ExecutionSuite2 -->
     </classes>
   </test> <!-- WorkOrder(failed) -->
 </suite> <!-- Failed suite [GoClinical_AutomationTesting] -->

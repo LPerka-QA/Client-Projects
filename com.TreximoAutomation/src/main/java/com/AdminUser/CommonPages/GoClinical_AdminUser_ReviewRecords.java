@@ -14,7 +14,7 @@ public class GoClinical_AdminUser_ReviewRecords {
 		getPage_PageLaunchUrl.LaunchURL();
 	}
 	
-	public static void AdminUser_Login(int row) throws IOException, InterruptedException {
+	public static void AdminUser_Login(int row) throws IOException, InterruptedException, BiffException {
 		AdminUser_Login getPage_PageLogin = new AdminUser_Login();
 		getPage_PageLogin.login(row);
 	}

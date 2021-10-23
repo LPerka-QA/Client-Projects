@@ -9,6 +9,8 @@ import com.AdminUser.PagesData.AdminUser_LoginPageData;
 import com.Utils.BasePages;
 import com.Utils.LaunchBrowser;
 
+import jxl.read.biff.BiffException;
+
 public class AdminUser_Login extends BasePages {
 	
 	AdminUser_LoginPageData data = new AdminUser_LoginPageData();
@@ -27,7 +29,7 @@ public class AdminUser_Login extends BasePages {
 
 		public WebElement btnLog_In() {
 
-			return driver.findElement(By.xpath("//input[@value='Log in' and @type='submit']"));
+			return driver.findElement(By.xpath("//input[@value='Login' and @type='submit']"));
 		}
 		
 		public static WebElement readonly_SignInSuccessMsg() {
@@ -41,19 +43,38 @@ public class AdminUser_Login extends BasePages {
 
 	// Each Object  Method	
 
-		public void EnterUserEmail() throws IOException {
-
-			enterText(txtUserEmail(), "Admin User Email", LaunchBrowser.TestSettingsObjects.getProperty("AdminUserEmail"));
+		public void EnterUserEmail() throws IOException, BiffException {			
+			try {
+				enterText(txtUserEmail(), "Admin User Email", LaunchBrowser.TestSettingsObjects.getProperty("AdminUserEmail"));
+				data.writeData("2", "1", "Enter the Email", "Email should be entered successfully", "Pass");
+			} catch (Exception e) {
+				data.writeData("2", "1", "Enter the Email", "Email should be entered successfully", "Fail");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
-		public void EnterUserPassword() {
-
-			txtUserPassword().sendKeys(LaunchBrowser.TestSettingsObjects.getProperty("AdminUserPassword"));
+		public void EnterUserPassword() throws BiffException, IOException {			
+			try {
+				txtUserPassword().sendKeys(LaunchBrowser.TestSettingsObjects.getProperty("AdminUserPassword"));
+				data.writeData("3", "2", "Enter the Password", "Password should be entered successfully", "Pass");
+			} catch (Exception e) {
+				data.writeData("3", "2", "Enter the Password", "Password should be entered successfully", "Fail");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
-		public void ClickLogInButton() throws IOException {
-
-			clickOnButton(btnLog_In(), "Log In");
+		public void ClickLogInButton() throws IOException, BiffException {
+			try {
+				clickOnButton(btnLog_In(), "Log In");
+				data.writeData("4", "3", "Click on LOG IN button", "LOG IN should be clicked successfully", "Pass");
+			} catch (Exception e) {
+				data.writeData("4", "3", "Click on LOG IN button", "LOG IN should be clicked successfully", "Fail");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		public void ValidateSignInMsg(int row) throws IOException {
@@ -72,11 +93,15 @@ public class AdminUser_Login extends BasePages {
 
 			driver.get(LaunchBrowser.TestSettingsObjects.getProperty("URL"));
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			
+			//CaptureScreenShot(driver,"ScreenshotName");
+			
+			//testresultdata.put("2", new Object[] {1d, "navigate to site and login", "site opens and login success","Pass"});
 		}				
 				
 	// Actual Functional Method 
 
-		public void login(int row) throws IOException, InterruptedException {
+		public void login(int row) throws IOException, InterruptedException, BiffException {
 			EnterUserEmail();
 			EnterUserPassword();
 			ClickLogInButton();

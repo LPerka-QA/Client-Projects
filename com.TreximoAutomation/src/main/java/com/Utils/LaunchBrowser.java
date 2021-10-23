@@ -69,12 +69,12 @@ public class LaunchBrowser extends BasePages {
 
 			System.setProperty("webdriver.chrome.driver",
 					System.getProperty("user.dir") + "\\Resources\\ChromeDriver\\chromedriver.exe");
-			ChromeOptions Options = new ChromeOptions();
-			Options.addArguments("disable-infobars");
-			Options.addArguments("--disable-notifications");
-			Options.addArguments("--disable-extensions");
-			Options.addArguments("--start-maximized");
-			driver = new ChromeDriver(Options);
+			//ChromeOptions Options = new ChromeOptions();
+			//Options.addArguments("disable-infobars");
+			//Options.addArguments("--disable-notifications");
+			//Options.addArguments("--disable-extensions");
+			//Options.addArguments("--start-maximized");
+			driver = new ChromeDriver();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 			// ThreadDriver.set(driver);

@@ -61,7 +61,7 @@ public class GoClinical_WorkOrder_AutomationTesting_ExecutionSuite {
 				LaunchBrowser.LaunchBrowserapp(browserName);
 			}
 
-			@Test(priority=0)
+			//@Test(priority=0)
 			public static void AdminUserNewWorkOrder() throws IOException, InterruptedException, BiffException, WriteException {
 				
 				CurrentPageTestCaseName = "GoClinical Admin User Automation Testing New Work Orders";
@@ -110,7 +110,7 @@ public class GoClinical_WorkOrder_AutomationTesting_ExecutionSuite {
 				
 			}
 			
-			@Test(priority=1)
+			//@Test(priority=1)
 			public void NurseUserMyWorkOrders() throws IOException, InterruptedException, BiffException {
 				
 				CurrentPageTestCaseName = "GoClinical Nurse User Automation Testing My Work Order";
@@ -160,7 +160,7 @@ public class GoClinical_WorkOrder_AutomationTesting_ExecutionSuite {
 			}
 			
 			
-			@Test(priority=2)
+			//@Test(priority=2)
 			public void AdminUserReviewRecords() throws IOException, InterruptedException, BiffException, WriteException {
 				
 				CurrentPageTestCaseName = "GoClinical Admin User Automation Testing Review Records";
