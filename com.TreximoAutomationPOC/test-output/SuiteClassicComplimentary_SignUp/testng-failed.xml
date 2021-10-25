@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [SuiteClassicComplimentary_SignUp]">
+  <test thread-count="5" name="TestClassicComplimentary_SignUp(failed)">
+    <classes>
+      <class name="com.MGS_Execution_Classes.ClassicComplimentary_SignUp">
+        <methods>
+          <include name="ComplimentarySignUP"/>
+          <include name="Beforetest"/>
+        </methods>
+      </class> <!-- com.MGS_Execution_Classes.ClassicComplimentary_SignUp -->
+    </classes>
+  </test> <!-- TestClassicComplimentary_SignUp(failed) -->
+</suite> <!-- Failed suite [SuiteClassicComplimentary_SignUp] -->

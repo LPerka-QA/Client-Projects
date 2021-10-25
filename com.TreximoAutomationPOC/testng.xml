@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<test thread-count="5" name="LightningMonthlyMember_SignUp">
+		<classes>
+			<class
+				name="com.MGS_Execution_Classes.LightningMonthlyMember_SignUp" />
+		</classes>
+	</test> <!-- Test -->
+
+	<test thread-count="6" name="LightningGiftMember_SignUp">
+		<classes>
+			<class
+				name="com.MGS_Execution_Classes.LightningGiftMember_SignUp" />
+		</classes>
+	</test> <!-- Test -->
+
+	<test thread-count="7" name="LightningFounder_SignUp">
+		<classes>
+			<class
+				name="com.MGS_Execution_Classes.LightningFounder_SignUp" />
+		</classes>
+	</test> <!-- Test -->
+
+	<test thread-count="8" name="LightningComplimentary_SignUp">
+		<classes>
+			<class
+				name="com.MGS_Execution_Classes.LightningComplimentary_SignUp" />
+		</classes>
+	</test> <!-- Test -->
+	
+		<test thread-count="9" name="ClassicComplimentary_SignUp">
+		<classes>
+			<class
+				name="com.MGS_Execution_Classes.ClassicComplimentary_SignUp" />
+		</classes>
+	</test> <!-- Test -->
+	
+		<test thread-count="10" name="ClassicFounder_SignUp">
+		<classes>
+			<class
+				name="com.MGS_Execution_Classes.ClassicFounder_SignUp" />
+		</classes>
+	</test> <!-- Test -->
+	
+		<test thread-count="11" name="ClassicGiftMember_SignUp">
+		<classes>
+			<class
+				name="com.MGS_Execution_Classes.ClassicGiftMember_SignUp" />
+		</classes>
+	</test> <!-- Test -->
+	
+		<test thread-count="12" name="ClassicMonthlyMember_SignUp">
+		<classes>
+			<class
+				name="com.MGS_Execution_Classes.ClassicMonthlyMember_SignUp" />
+		</classes>
+	</test> <!-- Test -->
+
+</suite> <!-- Suite -->
