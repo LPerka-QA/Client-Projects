@@ -14,9 +14,11 @@ public class GoClinical_Admin_Records_PageSteps {
 	ReadWriteDatatoExcel readwritetoExcel ;
 	AdminUser_Records adminUser_Records;
 	
-
-	public void Login(int row) throws BiffException, IOException {
+	public void LaunchUrl(int row) throws BiffException, IOException {
 		adminUser_Login.LaunchURL(row);
+	}
+	
+	public void Login(int row) throws BiffException, IOException {
 		adminUser_Login.EnterUserEmail(row);
 		adminUser_Login.EnterUserPassword(row);
 		adminUser_Login.ClickLogInButton(row);
@@ -27,21 +29,26 @@ public class GoClinical_Admin_Records_PageSteps {
 	public void ReviewAndSubmitRecords(int row) throws IOException, InterruptedException, BiffException {
 		adminUser_Records.ClickRecords(row);
 		adminUser_Records.ValidateRecordsHeader(row, readwritetoExcel.Getdata("Expected Admin User Records Header", row).trim());
-		adminUser_Records.ValidateLatestRecord(row, readwritetoExcel.Getdata("WorkOrder", row).trim(), 
-				readwritetoExcel.Getdata("Protocol", row).trim(), readwritetoExcel.Getdata("PatientID", row).trim(), 
-				readwritetoExcel.Getdata("Visit", row).trim(), readwritetoExcel.Getdata("RecordCreatedDate", row).trim(),
+		Thread.sleep(3000);
+		adminUser_Records.ValidateLatestRecord(row, readwritetoExcel.Getdata("Work Order ID", row).trim(), 
+				readwritetoExcel.Getdata("Protocol", row).trim(), readwritetoExcel.Getdata("Patient ID", row).trim(), 
+				readwritetoExcel.Getdata("Visit", row).trim(), readwritetoExcel.Getdata("Latest Record Created Date", row).trim(),
 				readwritetoExcel.Getdata("Expected Admin User Latest Record", row).trim());
-		adminUser_Records.ClickViewLatestRecord(row, readwritetoExcel.Getdata("WorkOrder", row).trim(), 
-				readwritetoExcel.Getdata("Protocol", row).trim(), readwritetoExcel.Getdata("PatientID", row).trim(), 
-				readwritetoExcel.Getdata("Visit", row).trim(), readwritetoExcel.Getdata("RecordCreatedDate", row).trim());
-		adminUser_Records.ValidateWorkOrdersID(row);
-		adminUser_Records.ValidatePatientID(row, readwritetoExcel.Getdata("PatientID", row).trim());
+		Thread.sleep(3000);
+		adminUser_Records.ClickViewLatestRecord(row, readwritetoExcel.Getdata("Work Order ID", row).trim(), 
+				readwritetoExcel.Getdata("Protocol", row).trim(), readwritetoExcel.Getdata("Patient ID", row).trim(), 
+				readwritetoExcel.Getdata("Visit", row).trim(), readwritetoExcel.Getdata("Latest Record Created Date", row).trim());
+		Thread.sleep(3000);
+		adminUser_Records.ValidateRecordID(row, readwritetoExcel.Getdata("Record ID", row).trim());
+		adminUser_Records.ValidateWorkOrdersID(row, readwritetoExcel.Getdata("Work Order ID", row).trim());
+		adminUser_Records.ValidatePatientID(row, readwritetoExcel.Getdata("Patient ID", row).trim());
 		adminUser_Records.ValidateStudyVisit(row, readwritetoExcel.Getdata("Visit", row).trim());
 		adminUser_Records.ValidateTextField1(row, readwritetoExcel.Getdata("TEXT FIELD 1", row).trim());
 		adminUser_Records.ValidateNumberField1(row, readwritetoExcel.Getdata("NUMBER FIELD 1", row).trim());
 		adminUser_Records.ValidateRadio1(row, readwritetoExcel.Getdata("RADIO 1", row).trim());
 		adminUser_Records.EnterPassword(row);
 		adminUser_Records.ClickSendToStudySite(row);
+		Thread.sleep(3000);
 		adminUser_Records.ValidateRecordSubmittedMsg(row, readwritetoExcel.Getdata("Expected Admin Record Submitted", row).trim());
 		adminUser_Records.ValidateAuditTrailStatus(row, readwritetoExcel.Getdata("Expected Audit Trail Status", row).trim());	
 	}

@@ -46,6 +46,7 @@ public class Onetest2 {
 		methodname= new Object(){}.getClass().getEnclosingMethod().getName();
 		TestMethodName = methodname.toString();
 		for (int row = 1; row <= GoClinicalNursePageSteps.ExcelCount()-1; row++) {
+			GoClinicalNursePageSteps.LaunchUrl(row);
 			GoClinicalNursePageSteps.Login(row);
 			GoClinicalNursePageSteps.CreateWorkOrderAutomationTestingRecord(row);
 			GoClinicalNursePageSteps.ReviewRecords(row);

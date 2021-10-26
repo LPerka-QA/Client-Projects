@@ -1,6 +1,8 @@
 package PageObjects;
 
 import java.io.IOException;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.Utils.BasePages;
@@ -136,7 +138,7 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void SelectSndRcrdTo_SiteCntct(int row, String SendRecordtoSiteContactValue) throws IOException, BiffException {
 		try {
 			selectByText(dpd_SndRcrdTo_SiteCntct, "Send Record To (Site Contact)", SendRecordtoSiteContactValue);
-			WriteTestReportinExcel("Select Send Record To (Site Contact) dropdown value", "Send Record To (Site Contact) dropdown value should be selected successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Select Send Record To (Site Contact) dropdown value", "Send Record To (Site Contact) dropdown value should be selected successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Select Send Record To (Site Contact) dropdown value", "Send Record To (Site Contact) dropdown value should be selected successfully", "FAIL", row);
@@ -151,7 +153,7 @@ public class AdminUser_NewWorkOrders extends BasePages {
 		try {
 			scrollElementIntoView(btn_CreateWorkOrder);
 			clickOnButton(btn_CreateWorkOrder, "Create Work order");
-			WriteTestReportinExcelWithScreenShot("Click Create Work order button", "Create Work order button should be clicked successfully", "PASS", row);
+			WriteTestReportinExcel("Click Create Work order button", "Create Work order button should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Click Create Work order button", "Create Work order button should be clicked successfully", "FAIL", row);
@@ -163,7 +165,7 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ClickSendWorkOrdertoUser(int row) throws IOException, BiffException {
 		try {
 			clickOnButton(SendWorktoUserBtn, "Send Work Order to User");
-			WriteTestReportinExcelWithScreenShot("Click Send Work Order to User button", "Create Send Work Order to User button should be clicked successfully", "PASS", row);
+			WriteTestReportinExcel("Click Send Work Order to User button", "Create Send Work Order to User button should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Click Send Work Order to User button", "Create Send Work Order to User button should be clicked successfully", "FAIL", row);
@@ -186,20 +188,30 @@ public class AdminUser_NewWorkOrders extends BasePages {
 		
 	}
 	
-	public String GetWrkOrdrNmbr(int row) throws IOException, BiffException {
-		String WorkOrderRecordNumber = null;
+	public String GetWrkOrdr(int row) throws IOException, BiffException {
+		String WorkOrder = null;
 		try {
-			WorkOrderRecordNumber = readonly_WorkOrderNumber.getText();		
+			WorkOrder= readonly_WorkOrderNumber.getText();		
 			//data.setData("Work Order Number", row, WorkOrderRecordNumber);
 			WriteTestReportinExcel("Get Created Work Order Number", "Created Work Order Number should be retrieved successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Get Created Work Order Number", "Created Work Order Number should be retrieved successfully", "FAIL", row);
-		}
-		
-		
-		return WorkOrderRecordNumber;
-		
+		}		
+		return WorkOrder;		
+	}
+	
+	public String GetWrkOrdrNmbr(int row) throws IOException, BiffException {
+		String WorkOrderNumber = null;
+		try {
+			String WorkOrder = readonly_WorkOrderNumber.getText();
+			WorkOrderNumber = WorkOrder.substring(11);
+			WriteTestReportinExcel("Get Created Work Order Number", "Created Work Order Number should be retrieved successfully", "PASS", row);
+		} catch (Exception e) {
+			// TODO: handle exception
+			WriteTestReportinExcelWithScreenShot("Get Created Work Order Number", "Created Work Order Number should be retrieved successfully", "FAIL", row);
+		}		
+		return WorkOrderNumber;		
 	}
 	
 	public String GetActiveStatus(int row) throws IOException, BiffException {
@@ -233,7 +245,7 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidatePatientID(int row, String PatientId) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_PatientID, PatientId, "PatientID");
-			WriteTestReportinExcelWithScreenShot("Verify Patient ID value", "PatientID value should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Patient ID value", "PatientID value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Verify PatientID value", "PatientID value should be verified successfully", "FAIL", row);
@@ -244,7 +256,7 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidateProtocol(int row, String ExpectedProtocol) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_Protocol, ExpectedProtocol, "Protocol");
-			WriteTestReportinExcelWithScreenShot("Verify Protocol value", "Protocol value should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Protocol value", "Protocol value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Verify Protocol value", "Protocol value should be verified successfully", "FAIL", row);
@@ -255,7 +267,7 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidateVisit(int row, String ExpectedVisit) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_Visit, ExpectedVisit, "Visit");
-			WriteTestReportinExcelWithScreenShot("Verify Visit value", "Visit value should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Visit value", "Visit value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Verify Visit value", "Visit value should be verified successfully", "FAIL", row);
@@ -266,7 +278,7 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidateSrvcePrvdr(int row, String ExpectedSrvcePrvdrEmail) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_ServiceProvider, ExpectedSrvcePrvdrEmail, "Service Provider Email RVSP");
-			WriteTestReportinExcelWithScreenShot("Verify Service Provider Email RVSP value",
+			WriteTestReportinExcel("Verify Service Provider Email RVSP value",
 					"Service Provider Email RVSP value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -275,20 +287,29 @@ public class AdminUser_NewWorkOrders extends BasePages {
 		
 	}
 	
-	public void ValidateNotifyMsg(int row, String ExpectedSrvcePrvdrEmail) throws IOException, BiffException {
+	public String GetNotifyMsg(int row) throws IOException, BiffException {
+		String NotifyMsg = null;
 		try {
-			if(readonly_NotifyMsg.getText().contains(ExpectedSrvcePrvdrEmail)== true)
-			{
-			String NotifyMsg = readonly_NotifyMsg.getText();
-			WriteTestReportinExcelWithScreenShot("Verify Notify message", "Notify message should be verified successfully", "PASS", row);
-			}
-			
+			NotifyMsg = readonly_NotifyMsg.getText();
+			WriteTestReportinExcel("Verify Notify message", "Notify message should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Verify Notify message", "Notify message should be verified successfully", "FAIL", row);
 		}
 		
-		
+		return NotifyMsg;
+	}
+	
+	public void ValidateNotifyMsg(int row, String ExpectedSrvcePrvdrEmail) throws IOException, BiffException {
+		try {
+			if(readonly_NotifyMsg.getText().contains(ExpectedSrvcePrvdrEmail)== true)
+			{
+			WriteTestReportinExcelWithScreenShot("Verify Notify message", "Notify message should be verified successfully", "PASS", row);
+			}			
+		} catch (Exception e) {
+			// TODO: handle exception
+			WriteTestReportinExcelWithScreenShot("Verify Notify message", "Notify message should be verified successfully", "FAIL", row);
+		}
 		
 	}
 

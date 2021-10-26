@@ -17,13 +17,22 @@ public class NurseUser_Records extends BasePages {
 
 	@FindBy(xpath = "//div[@id='records_index']//h1[contains(text(),'Records')]")
 	public WebElement readonly_RecordsHeader;
+	
+	public WebElement readonly_GetLatestRecord_RecordID(String WorkOrder, String Protocol, String PatientId,
+			String Visit) {
+		return driver.findElement(By.xpath("//table[@class='table table-condensed table-hover']//td[text()='"+WorkOrder+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='REVIEW']//..//td[1]"));
+
+	}
+	
+	public WebElement readonly_ValidateLatestRecord(String WorkOrder, String Protocol, String PatientId,
+			String Visit) {
+		return driver.findElement(By.xpath("//table[@class='table table-condensed table-hover']//td[text()='"+WorkOrder+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[7]"));
+
+	}
 
 	public WebElement readonly_GetLatestRecord_CreatedDate(String WorkOrder, String Protocol, String PatientId,
 			String Visit) {
-		String WorkOrderNumber = WorkOrder.substring(11);
-		return driver.findElement(By.xpath("//table[@class='table table-condensed table-hover']//td[text()='"
-				+ WorkOrderNumber + "']//..//td[text()='" + Protocol + "']//..//td[text()='" + PatientId
-				+ "']//..//td[text()='" + Visit + "']//..//td[text()='REVIEW']//..//td[6]"));
+		return driver.findElement(By.xpath("//table[@class='table table-condensed table-hover']//td[text()='"+WorkOrder+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='REVIEW']//..//td[6]"));
 
 	}
 
@@ -45,15 +54,14 @@ public class NurseUser_Records extends BasePages {
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Verify Records Header", "Records Header should be verified successfully", "FAIL", row);
-		}
-		
+		}		
 
 	}
-
+	
 	public void ValidateLatestRecord(int row, String ExpectedLatestRecord, String WorkOrder, String Protocol,
 			String PatientId, String Visit) throws IOException, BiffException {
 		try {
-			verifyTextEqual(readonly_GetLatestRecord_CreatedDate(WorkOrder, Protocol, PatientId, Visit),
+			verifyTextEqual(readonly_ValidateLatestRecord(WorkOrder, Protocol, PatientId, Visit),
 					ExpectedLatestRecord, "Validate latest Record");
 			WriteTestReportinExcelWithScreenShot("Verify Latest Record", "Latest Record should be verified successfully", "PASS", row);
 		} catch (Exception e) {
@@ -64,10 +72,27 @@ public class NurseUser_Records extends BasePages {
 
 	}
 
-	public String GetLtstRcrdCrtdDate(int row ,String WorkOrder, String Protocol, String PatientId, String Visit ) throws IOException, BiffException {
+	public String GetLtstRcrdID(int row ,String WorkOrder, String Protocol, String PatientId, String Visit) throws IOException, BiffException {
+		String LatestRecordID = null;
+		try {
+			LatestRecordID = readonly_GetLatestRecord_RecordID(WorkOrder, Protocol, PatientId, Visit).getText();
+			System.out.println(LatestRecordID);
+//			data.setData("Latest Record Created Date", row, LatestRecordCreateDate);
+			WriteTestReportinExcel("Get Latest Record ID", "Latest Record ID should be retrieved successfully", "PASS", row);
+		} catch (Exception e) {
+			// TODO: handle exception
+			WriteTestReportinExcelWithScreenShot("Get Latest Record ID", "Latest Record ID should be retrieved successfully", "FAIL", row);
+		}
+		
+		return LatestRecordID;
+
+	}
+	
+	public String GetLtstRcrdCrtdDate(int row ,String WorkOrder, String Protocol, String PatientId, String Visit) throws IOException, BiffException {
 		String LatestRecordCreateDate = null;
 		try {
 			LatestRecordCreateDate = readonly_GetLatestRecord_CreatedDate(WorkOrder, Protocol, PatientId, Visit).getText();
+			System.out.println(LatestRecordCreateDate);
 //			data.setData("Latest Record Created Date", row, LatestRecordCreateDate);
 			WriteTestReportinExcel("Get Latest Record Create Date", "Latest Record Create Date should be retrieved successfully", "PASS", row);
 		} catch (Exception e) {
@@ -78,6 +103,8 @@ public class NurseUser_Records extends BasePages {
 		return LatestRecordCreateDate;
 
 	}
+	
+	
 
 
 }

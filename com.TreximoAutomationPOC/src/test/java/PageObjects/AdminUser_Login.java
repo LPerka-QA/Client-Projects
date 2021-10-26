@@ -50,7 +50,7 @@ public class AdminUser_Login extends BasePages {
 			enterText(txtUserPassword, "Admin User Password",
 					GoClinicTest.TestSettingsObjects.getProperty("AdminUserPassword"));
 			
-			WriteTestReportinExcel("Enter Admin User Password", "Admin User Password should be entered successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Enter Admin User Password", "Admin User Password should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Enter Admin User Password", "Admin User Passoword should be entered successfully", "FAIL", row);
@@ -88,7 +88,7 @@ public class AdminUser_Login extends BasePages {
 		try {			
 			verifyCorrectPageHeading(readonly_AdminHomePageMsg, ExpectedAdminHomePageMsg);
 			
-			WriteTestReportinExcelWithScreenShot("Verify Admin Home Page header", "Admin Home Page Header should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Admin Home Page header", "Admin Home Page Header should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Verify Admin Home Page header", "Admin Home Page Header should be verified successfully", "FAIL", row);

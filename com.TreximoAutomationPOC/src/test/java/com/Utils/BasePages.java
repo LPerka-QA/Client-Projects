@@ -33,6 +33,8 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import Commons.GoClinicTest;
 import ExecutionClasses.Onetest;
+import ExecutionClasses.Onetest2;
+import ExecutionClasses.Onetest3;
 import jxl.read.biff.BiffException;
 
 public class BasePages {
@@ -256,6 +258,7 @@ public class BasePages {
 				waitForElement(element);
 				if (isElementPresent(element)) {
 					// element.clear();
+					element.click();
 					waitForAjax();
 					element.sendKeys(text);
 					ResultsLog.ReportDoneEvent("Successfully entered " + fieldName + ": " + text.trim());
@@ -1068,6 +1071,7 @@ public class BasePages {
 			writetestreport.setReportData("Action", writetestreport.GetRowsReport(), Action);
 			writetestreport.setReportData("ExpectedResult", writetestreport.GetRowsReport(), Expectedresults);
 			writetestreport.setReportData("ActualResult", writetestreport.GetRowsReport(), ActualResults);
+			writetestreport.setReportData("ScreenshotPath", writetestreport.GetRowsReport(), "N/A");
 			// writetestreport.setReportData("ScreenshotPath",
 			// writetestreport.GetRowsReport(),
 			// System.getProperty("user.dir") + "\\Resources\\Screenshots");
@@ -1090,7 +1094,7 @@ public class BasePages {
 			writetestreport.setReportData("ExpectedResult", writetestreport.GetRowsReport(), Expectedresults);
 			writetestreport.setReportData("ActualResult", writetestreport.GetRowsReport(), ActualResults);
 			writetestreport.setReportData("ScreenshotPath", writetestreport.GetRowsReport(), GoClinicTest.ScreenshotPath);
-			ResultsLog.CaptureScreenShotforExcelReport(driver, Stepno+"_" + GoClinicTest.TestMethodName+"_" , GoClinicTest.ScreenshotPath);
+			ResultsLog.CaptureScreenShotforExcelReport(driver, Stepno+"_" + Onetest3.TestMethodName+"_" , GoClinicTest.ScreenshotPath);
 		} catch (Exception e) {
 			System.out.println("write test report excel error catch" + e);
 		}

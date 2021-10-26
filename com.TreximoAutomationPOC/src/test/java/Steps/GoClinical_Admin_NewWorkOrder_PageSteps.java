@@ -14,8 +14,11 @@ public class GoClinical_Admin_NewWorkOrder_PageSteps {
 	ReadWriteDatatoExcel readwritetoExcel;
 	AdminUser_NewWorkOrders adminuser_NewWorkOrders;
 
-	public void Login(int row) throws BiffException, IOException {
+	public void LaunchUrl(int row) throws BiffException, IOException {
 		adminUser_Login.LaunchURL(row);
+	}
+	
+	public void Login(int row) throws BiffException, IOException {
 		adminUser_Login.EnterUserEmail(row);
 		adminUser_Login.EnterUserPassword(row);
 		adminUser_Login.ClickLogInButton(row);
@@ -40,7 +43,8 @@ public class GoClinical_Admin_NewWorkOrder_PageSteps {
 		adminuser_NewWorkOrders.ClickCreateWorkOrder(row);
 		adminuser_NewWorkOrders.ValidateCrtWrkOrdrSuccessMsg(row,
 				readwritetoExcel.Getdata("Expected Work Order Created Message", row).trim());
-		readwritetoExcel.setData("Work Order Number", row, adminuser_NewWorkOrders.GetWrkOrdrNmbr(row));
+		readwritetoExcel.setData("Work Order Number", row, adminuser_NewWorkOrders.GetWrkOrdr(row));
+		readwritetoExcel.setData("Work Order ID", row, adminuser_NewWorkOrders.GetWrkOrdrNmbr(row));
 		readwritetoExcel.setData("Active Status", row, adminuser_NewWorkOrders.GetActiveStatus(row));
 		readwritetoExcel.setData("Status", row, adminuser_NewWorkOrders.GetStatus(row));
 		adminuser_NewWorkOrders.ValidatePatientID(row, readwritetoExcel.Getdata("Patient ID", row).trim());
@@ -49,9 +53,9 @@ public class GoClinical_Admin_NewWorkOrder_PageSteps {
 		adminuser_NewWorkOrders.ValidateSrvcePrvdr(row,
 				readwritetoExcel.Getdata("Service Provider Email RVSP", row).trim());
 		adminuser_NewWorkOrders.ClickSendWorkOrdertoUser(row);
+		readwritetoExcel.setData("Notification Message", row, adminuser_NewWorkOrders.GetNotifyMsg(row));
 		adminuser_NewWorkOrders.ValidateNotifyMsg(row,
 				readwritetoExcel.Getdata("Service Provider Email RVSP", row).trim());
-
 	}
 
 	public void Logout(int row) throws BiffException, IOException {

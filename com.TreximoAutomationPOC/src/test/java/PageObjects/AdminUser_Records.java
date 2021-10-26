@@ -24,20 +24,24 @@ public class AdminUser_Records extends BasePages {
 	
 	public WebElement readonly_LatestRecord(String WorkOrder, String Protocol, String PatientId,
 			String Visit, String RecordCreatedDate) {
-		WorkOrderNumber = WorkOrder.substring(11);
-		return driver.findElement(By.xpath("//td[text()='"+WorkOrderNumber+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='"+RecordCreatedDate+"']//..//td[text()='REVIEW']//..//td//a[contains(@href,'/records/')]"));
+		return driver.findElement(By.xpath("//td[text()='"+WorkOrder+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='"+RecordCreatedDate+"']//..//td[text()='REVIEW']//..//td//a[contains(@href,'/records/')]"));
 
 	}
 	
 	public WebElement Lnk_ViewLatestRecord(String WorkOrder, String Protocol, String PatientId,
 			String Visit, String RecordCreatedDate) {
-		String WorkOrderNumber = WorkOrder.substring(11);
-		return driver.findElement(By.xpath("//td[text()='"+WorkOrderNumber+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='"+RecordCreatedDate+"']//..//td[text()='REVIEW']//..//td//a[contains(@href,'/records/')]"));
+		return driver.findElement(By.xpath("//td[text()='"+WorkOrder+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='"+RecordCreatedDate+"']//..//td[text()='REVIEW']//..//td//a[contains(@href,'/records/') and text()='View']"));
 
 	}
 	
 	@FindBy(xpath = "//a[@href='/records?page=2' and text()='Next ›']")
-	public WebElement Lnk_Next;
+	public WebElement Lnk_Next2;
+	
+	@FindBy(xpath = "//a[@href='/records?page=3' and text()='Next ›']")
+	public WebElement Lnk_Next3;
+	
+	@FindBy(xpath = "//table[@class='table table-condensed']//tbody//tr[2]//th[text()='Record ID:']//..//td")
+	public WebElement readonly_RecordID;
 	
 	@FindBy(xpath = "//table[@class='table table-condensed']//tbody//tr[3]//th[text()='Work Order ID:']//..//td")
 	public WebElement readonly_WorkOrdersID;
@@ -85,7 +89,7 @@ public class AdminUser_Records extends BasePages {
 		public void ClickRecords(int row) throws IOException, BiffException {	
 			try {
 				clickOnLink(lnk_Records, "Records ");
-				WriteTestReportinExcelWithScreenShot("Click Records link", "Create Records link should be clicked successfully", "PASS", row);
+				WriteTestReportinExcel("Click Records link", "Create Records link should be clicked successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
 				WriteTestReportinExcelWithScreenShot("Click Records link", "Create Records link should be clicked successfully", "FAIL", row);
@@ -108,8 +112,34 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateLatestRecord(int row, String WorkOrder, String Protocol, String PatientId,
 				String Visit, String RecordCreatedDate, String ExpectedLatestRecord) throws IOException, BiffException {
 			try {
+				if(driver.findElements(By.xpath("//td[text()='"+WorkOrder+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='"+RecordCreatedDate+"']//..//td[text()='REVIEW']//..//td//a[contains(@href,'/records/')]")).size() != 0)
+				{
+				scrollElementIntoView(readonly_LatestRecord(WorkOrder, Protocol, PatientId,
+						Visit, RecordCreatedDate));
 				verifyTextEqual(readonly_LatestRecord(WorkOrder, Protocol, PatientId,
 						Visit, RecordCreatedDate), ExpectedLatestRecord, "Validate latest record");
+				}
+				else {
+				scrollElementIntoView(Lnk_Next2);
+				clickOnLink(Lnk_Next2, "Next");
+				if(driver.findElements(By.xpath("//td[text()='"+WorkOrder+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='"+RecordCreatedDate+"']//..//td[text()='REVIEW']//..//td//a[contains(@href,'/records/')]")).size() != 0) {
+					scrollElementIntoView(readonly_LatestRecord(WorkOrder, Protocol, PatientId,
+							Visit, RecordCreatedDate));
+					verifyTextEqual(readonly_LatestRecord(WorkOrder, Protocol, PatientId,
+							Visit, RecordCreatedDate), ExpectedLatestRecord, "Validate latest record");
+				}
+				else {
+					scrollElementIntoView(Lnk_Next3);
+					clickOnLink(Lnk_Next3, "Next");
+					if(driver.findElements(By.xpath("//td[text()='"+WorkOrder+"']//..//td[text()='"+Protocol+"']//..//td[text()='"+PatientId+"']//..//td[text()='"+Visit+"']//..//td[text()='"+RecordCreatedDate+"']//..//td[text()='REVIEW']//..//td//a[contains(@href,'/records/')]")).size() != 0)
+					{
+						scrollElementIntoView(readonly_LatestRecord(WorkOrder, Protocol, PatientId,
+								Visit, RecordCreatedDate));
+					verifyTextEqual(readonly_LatestRecord(WorkOrder, Protocol, PatientId,
+							Visit, RecordCreatedDate), ExpectedLatestRecord, "Validate latest record");
+					}
+					}
+				}
 				WriteTestReportinExcelWithScreenShot("Verify Latest Record", "Latest Record should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -121,9 +151,11 @@ public class AdminUser_Records extends BasePages {
 		public void ClickViewLatestRecord(int row, String WorkOrder, String Protocol, String PatientId,
 				String Visit, String RecordCreatedDate) throws IOException, BiffException {		
 			try {
+				scrollElementIntoView(Lnk_ViewLatestRecord(WorkOrder, Protocol, PatientId,
+						Visit, RecordCreatedDate));
 				clickOnLink(Lnk_ViewLatestRecord(WorkOrder, Protocol, PatientId,
 						Visit, RecordCreatedDate), "View");
-				WriteTestReportinExcel("Click Latest Record View link", "Latest Record View link should be clicked successfully", "PASS", row);
+				WriteTestReportinExcelWithScreenShot("Click Latest Record View link", "Latest Record View link should be clicked successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
 				WriteTestReportinExcelWithScreenShot("Click Latest Record View link", "Latest Record View link should be clicked successfully", "FAIL", row);
@@ -134,7 +166,7 @@ public class AdminUser_Records extends BasePages {
 		public void EnterPassword(int row) throws IOException, BiffException {
 			try {
 				enterText(txt_Password, "Password", GoClinicTest.TestSettingsObjects.getProperty("AdminUserPassword"));
-				WriteTestReportinExcel("Enter Password", "Password should be entered successfully", "PASS", row);
+				WriteTestReportinExcelWithScreenShot("Enter Password", "Password should be entered successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
 				WriteTestReportinExcelWithScreenShot("Enter Password", "Password should be entered successfully", "FAIL", row);
@@ -144,6 +176,7 @@ public class AdminUser_Records extends BasePages {
 		
 		public void ClickSendToStudySite(int row) throws IOException, BiffException {	
 			try {
+				scrollElementIntoView(btn_SendToStudySite);
 				clickOnButton(btn_SendToStudySite, "Send to Study Site");
 				WriteTestReportinExcel("Click Send to Study Site button", "Send to Study Site button should be clicked successfully", "PASS", row);
 			} catch (Exception e) {
@@ -157,9 +190,21 @@ public class AdminUser_Records extends BasePages {
 		// Each Object Performance Method
 			// Verification Section
 		
-		public void ValidateWorkOrdersID(int row) throws IOException, BiffException {
+		public void ValidateRecordID(int row, String ExpectedRecordID) throws IOException, BiffException {
 			try {
-				verifyTextEqual(readonly_WorkOrdersID, WorkOrderNumber,	"Work Order Number is ");
+				verifyTextEqual(readonly_RecordID, ExpectedRecordID, "Record ID is ");
+				WriteTestReportinExcelWithScreenShot("Verify Record ID value", "Record ID value should be verified successfully", "PASS", row);
+			} catch (Exception e) {
+				// TODO: handle exception
+				WriteTestReportinExcelWithScreenShot("Verify Record ID value", "Record ID value should be verified successfully", "FAIL", row);
+			}
+			
+
+		}
+		
+		public void ValidateWorkOrdersID(int row, String ExpectedWorkOrderID) throws IOException, BiffException {
+			try {
+				verifyTextEqual(readonly_WorkOrdersID, ExpectedWorkOrderID,	"Work Order Number is ");
 				WriteTestReportinExcelWithScreenShot("Verify Work Orders ID value", "Work Orders ID value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception

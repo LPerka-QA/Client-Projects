@@ -16,12 +16,7 @@ public class NurseUser_MyWorkOrders_VitalSigns extends BasePages {
 		System.out.println(WorkOrder);
 		String WorkOrderNumber = WorkOrder.substring(11);
 		System.out.println(WorkOrderNumber);
-		return driver.findElement(By.xpath("//a[@data-work-order-id='" + WorkOrderNumber
-				+ "' and @class='list-group-item work-order-without-record']"));
-	}
-
-	public WebElement rdbtn_Radio1(int row, String Radio1) {
-		return driver.findElement(By.xpath("//input[@value='" + Radio1 + "' and @type='radio']"));
+		return driver.findElement(By.xpath("//a[@data-work-order-id='"+WorkOrderNumber+"' and @class='list-group-item work-order-without-record']"));
 	}
 
 	@FindBy(xpath = "//div[@class='col-xs-12']//h1")

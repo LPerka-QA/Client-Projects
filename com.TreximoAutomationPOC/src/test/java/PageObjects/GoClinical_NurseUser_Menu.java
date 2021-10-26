@@ -25,7 +25,7 @@ public class GoClinical_NurseUser_Menu extends BasePages {
 	public void ClickRecords(int row) throws IOException, BiffException {
 		try {
 			clickOnButton(btn_Records, "Records");
-			WriteTestReportinExcel("Click Records link", "Records link should be clicked successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Click Records link", "Records link should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Click Records link", "Records link should be clicked successfully", "FAIL", row);
@@ -35,7 +35,7 @@ public class GoClinical_NurseUser_Menu extends BasePages {
 	public void ClickWelcomUser(int row) throws IOException, BiffException {
 		try {
 			clickOnButton(btn_WelcomeUser, "Welcome ");
-			WriteTestReportinExcel("Click Welcome User link", "Welcome User link should be clicked successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Click Welcome User link", "Welcome User link should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Click Welcome User link", "Welcome User link should be clicked successfully", "FAIL", row);

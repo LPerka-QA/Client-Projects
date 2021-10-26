@@ -13,15 +13,12 @@ import jxl.read.biff.BiffException;
 public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 
 	public WebElement lnk_MyWrkOrdrsLtstRcrd(int row, String WorkOrder) {
-		System.out.println(WorkOrder);
-		String WorkOrderNumber = WorkOrder.substring(11);
-		System.out.println(WorkOrderNumber);
-		return driver.findElement(By.xpath("//a[@data-work-order-id='" + WorkOrderNumber
-				+ "' and @class='list-group-item work-order-without-record']"));
+		return driver.findElement(By.xpath("//a[@data-work-order-id='"+WorkOrder+"' and @class='list-group-item work-order-without-record']"));
+		
 	}
 
 	public WebElement rdbtn_Radio1(int row, String Radio1) {
-		return driver.findElement(By.xpath("//input[@value='" + Radio1 + "' and @type='radio']"));
+		return driver.findElement(By.xpath("//input[@value='"+Radio1+"' and @type='radio']"));
 	}
 
 	@FindBy(xpath = "//div[@class='col-xs-12']//h1")
@@ -81,7 +78,7 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void ClickMyWrkOrdrLtstRcrd(int row, String WorkOrder) throws IOException, BiffException {
 		try {
 			scrollElementIntoView(lnk_MyWrkOrdrsLtstRcrd(row, WorkOrder));
-			clickMainMenu(lnk_MyWrkOrdrsLtstRcrd(row, WorkOrder));
+			clickOnLink(lnk_MyWrkOrdrsLtstRcrd(row, WorkOrder), "Latest Work Order");
 			WriteTestReportinExcel("Click My Work Order Latest Record link", "My Work Order Latest Record link should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -116,7 +113,7 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 		try {
 			// click on ‘Choose file’ to upload the desired file
 			enterText(txt_FileField1, "File Field 1",
-					System.getProperty("user.dir") + "\\Resources\\File Upload Testing 01.png");
+					System.getProperty("user.dir") + "\\Resources\\TestData\\File Upload Testing 01.png");
 			WriteTestReportinExcel("Select UPLOAD FILE", "Selected UPLOAD FILE should be uploaded successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -124,10 +121,10 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 		}
 		
 	}
-
+	
 	public void Enter_DateField1(int row, String DateField1) throws IOException, InterruptedException, BiffException {
 		try {
-			enterText(txt_DateField1, "DATE FIELD 1", DateField1);
+			enterTextWithoutClearing(txt_DateField1, "DATE FIELD 1", DateField1);
 			WriteTestReportinExcel("Enter DATE FIELD 1", "DATE FIELD 1 should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -138,8 +135,9 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 
 	public void Enter_TimeField1(int row, String TimeField1) throws IOException, BiffException {
 		try {
-			enterText(txt_TimeField1, "TIME FIELD 1", TimeField1);
-			WriteTestReportinExcel("Enter TIME FIELD 1", "TIME FIELD 1 should be entered successfully", "PASS", row);
+			scrollElementIntoView(txt_TimeField1);
+			enterTextWithoutClearing(txt_TimeField1, "TIME FIELD 1", TimeField1);
+			WriteTestReportinExcelWithScreenShot("Enter TIME FIELD 1", "TIME FIELD 1 should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Enter TIME FIELD 1", "TIME FIELD 1 should be entered successfully", "FAIL", row);
@@ -172,7 +170,7 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void ClickContinue(int row) throws IOException, BiffException {
 		try {
 			clickOnButton(btn_Continue, "Continue");
-			WriteTestReportinExcel("Click Continue button", "Continue button should be clicked successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Click Continue button", "Continue button should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Click Continue button", "Continue button should be clicked successfully", "FAIL", row);

@@ -44,7 +44,7 @@ public class NurseUser_Login extends BasePages {
 		try {
 			enterText(txtUserPassword, "Nurse User Password", GoClinicTest.TestSettingsObjects.getProperty("NurseUserPassword"));
 			
-			WriteTestReportinExcel("Enter Nurse User Password", "Nurse User Password should be entered successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Enter Nurse User Password", "Nurse User Password should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Enter Nurse User Password", "Nurse User Passoword should be entered successfully", "FAIL", row);
@@ -56,7 +56,7 @@ public class NurseUser_Login extends BasePages {
 		try {
 			clickOnButton(btnLog_In, "Log In");
 			
-			WriteTestReportinExcelWithScreenShot("Click LOG IN button", "LOG IN button should be clicked successfully", "PASS", row);
+			WriteTestReportinExcel("Click LOG IN button", "LOG IN button should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Click LOG IN button", "LOG IN button should be clicked successfully", "FAIL", row);
@@ -80,7 +80,7 @@ public class NurseUser_Login extends BasePages {
 	public void ValidateMyWorkOrdersPageMsg(int row, String ExpectedNurseHomePageMsg) throws IOException, BiffException {
 		try {
 			verifyCorrectPageHeading(readonly_MyWorkOrders, ExpectedNurseHomePageMsg);
-			WriteTestReportinExcelWithScreenShot("Verify SIGN IN message", "SIGN IN message should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify SIGN IN message", "SIGN IN message should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Verify SIGN IN message", "SIGN IN message should be verified successfully", "FAIL", row);
