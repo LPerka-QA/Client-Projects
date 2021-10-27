@@ -1,5 +1,5 @@
 package com.Utils;
-
+ 
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,6 +37,9 @@ import ExecutionClasses.Onetest;
 import ExecutionClasses.Onetest2;
 import ExecutionClasses.Onetest3;
 import jxl.read.biff.BiffException;
+import jxl.write.DateTime;
+
+import java.time.format.DateTimeFormatter;
 
 public class BasePages {
 	protected static WebDriver driver;
@@ -1010,7 +1014,30 @@ public class BasePages {
 		String month = c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH);
 		return month;
 	}
-
+	
+	/*******Treximo
+	 * @throws ParseException ********/
+	  
+	public static String TreximoDateField1(String strDate) throws ParseException {
+	DateTimeFormatter dtfInput = DateTimeFormatter.ofPattern("MMddyyyy", Locale.ENGLISH);
+	        LocalDate date = LocalDate.parse(strDate, dtfInput);
+	        System.out.println("date" + date);
+	DateTimeFormatter dtfOutputEng = DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.ENGLISH);
+	        String formattedEng = dtfOutputEng.format(date);
+	        System.out.println(formattedEng);
+			return formattedEng;
+	}
+	
+	public static String TreximoTimeField1(String strTime) {
+		DateTimeFormatter dtfInput = DateTimeFormatter.ofPattern("HHmma", Locale.ENGLISH);
+	        System.out.println("dtfInput"+dtfInput);
+	        LocalTime date = LocalTime.parse(strTime, dtfInput);
+	        System.out.println("date"+date);
+	        String timefield = date.toString();
+	        System.out.println("timefield"+timefield);
+				return timefield;
+		}
+	
 	public static String getCurrentYear() {
 		SimpleDateFormat DateMonth = new SimpleDateFormat("yyyy");
 		Date Year = new Date();
@@ -1094,7 +1121,7 @@ public class BasePages {
 			writetestreport.setReportData("ExpectedResult", writetestreport.GetRowsReport(), Expectedresults);
 			writetestreport.setReportData("ActualResult", writetestreport.GetRowsReport(), ActualResults);
 			writetestreport.setReportData("ScreenshotPath", writetestreport.GetRowsReport(), GoClinicTest.ScreenshotPath);
-			ResultsLog.CaptureScreenShotforExcelReport(driver, Stepno+"_" + Onetest3.TestMethodName+"_" , GoClinicTest.ScreenshotPath);
+			ResultsLog.CaptureScreenShotforExcelReport(driver, Stepno+"_" + GoClinicTest.testMethodName+"_" , GoClinicTest.ScreenshotPath);
 		} catch (Exception e) {
 			System.out.println("write test report excel error catch" + e);
 		}

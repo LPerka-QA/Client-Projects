@@ -73,6 +73,21 @@ public class AdminUser_Records extends BasePages {
 	@FindBy(xpath = "//table[@class='table table-bordered']//tbody//tr//td[contains(text(),'Number Field 1')]//..//td[2][contains(text(),'')]")
 	public WebElement readonly_NumberField1;
 	
+	@FindBy(xpath = "//table[@class='table table-bordered']//tbody//tr//td[contains(text(),'File Field 1')]//..//td[2]//a[contains(text(),'')]")
+	public WebElement readonly_FileField1;
+	
+	@FindBy(xpath = "//table[@class='table table-bordered']//tbody//tr//td[contains(text(),'Date Field 1')]//..//td[2][contains(text(),'')]")
+	public WebElement readonly_DateField1;
+	
+	@FindBy(xpath = "//table[@class='table table-bordered']//tbody//tr//td[contains(text(),'Time Field 1')]//..//td[2][contains(text(),'')]")
+	public WebElement readonly_TimeField1;
+	
+	@FindBy(xpath = "//table[@class='table table-bordered']//tbody//tr//td//strong[contains(text(),'Descriptive Text 1')]//..//..//td[2][contains(text(),'')]")
+	public WebElement readonly_DescriptiveText1;
+	
+	@FindBy(xpath = "//table[@class='table table-bordered']//tbody//tr//td[contains(text(),'Drop Down 1')]//..//td[2][contains(text(),'')]")
+	public WebElement readonly_Dropdown1;
+	
 	@FindBy(xpath = "//table[@class='table table-bordered']//tbody//tr//td[contains(text(),'Radio 1')]//..//td[2][contains(text(),'')]")
 	public WebElement readonly_Radio1;
 	
@@ -100,10 +115,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateRecordsHeader(int row, String ExpectedRecordsHeader) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_RecordsHeader, ExpectedRecordsHeader, "Validate records header");
-				WriteTestReportinExcelWithScreenShot("Verify Records Header", "Records Header should be verified successfully", "PASS", row);
+				WriteTestReportinExcelWithScreenShot("Verify Records Header: " + ExpectedRecordsHeader, "Records Header should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Records Header", "Records Header should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Records Header: " + ExpectedRecordsHeader, "Records Header should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -193,10 +208,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateRecordID(int row, String ExpectedRecordID) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_RecordID, ExpectedRecordID, "Record ID is ");
-				WriteTestReportinExcelWithScreenShot("Verify Record ID value", "Record ID value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Record ID value: " + ExpectedRecordID, "Record ID value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Record ID value", "Record ID value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Record ID value: " + ExpectedRecordID, "Record ID value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -205,10 +220,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateWorkOrdersID(int row, String ExpectedWorkOrderID) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_WorkOrdersID, ExpectedWorkOrderID,	"Work Order Number is ");
-				WriteTestReportinExcelWithScreenShot("Verify Work Orders ID value", "Work Orders ID value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Work Orders ID value: " + ExpectedWorkOrderID, "Work Orders ID value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Work Orders ID value", "Work Orders ID value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Work Orders ID value: " + ExpectedWorkOrderID, "Work Orders ID value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -217,10 +232,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidatePatientID(int row, String ExpectedPatientID) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_PatientID, ExpectedPatientID, "Patient ID is ");
-				WriteTestReportinExcelWithScreenShot("Verify Patient ID value", "Patient ID value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Patient ID value: " + ExpectedPatientID, "Patient ID value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Patient ID value", "Patient ID value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Patient ID value: " + ExpectedPatientID, "Patient ID value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -229,10 +244,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateStudyVisit(int row, String ExpectedStudyVisit) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_StudyVisit, ExpectedStudyVisit, "Visit Value is ");
-				WriteTestReportinExcelWithScreenShot("Verify Visit value", "Visit value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Visit value: " + ExpectedStudyVisit, "Visit value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Visit value", "Visit value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Visit value: " + ExpectedStudyVisit, "Visit value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -241,10 +256,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateBloodPressureSystolic(int row, String ExpectedBPSystolic) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_BloodPressure_Systolic_mm_Hg, ExpectedBPSystolic, "Blood Pressure Systolic Value is ");
-				WriteTestReportinExcelWithScreenShot("Verify Blood Pressure Systolic value", "Blood Pressure Systolic value should be verified successfully", "PASS", row);
+				WriteTestReportinExcelWithScreenShot("Verify Blood Pressure Systolic value: " + ExpectedBPSystolic, "Blood Pressure Systolic value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Blood Pressure Systolic value", "Blood Pressure Systolic value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Blood Pressure Systolic value: " + ExpectedBPSystolic, "Blood Pressure Systolic value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -253,10 +268,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateBloodPressureDiastolic(int row, String ExpectedBPDiastolic) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_BloodPressure_Diastolic_mm_Hg, ExpectedBPDiastolic, "Blood Pressure Diastolic Value is");
-				WriteTestReportinExcelWithScreenShot("Verify Blood Pressure Diastolic value", "Blood Pressure Diastolic value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Blood Pressure Diastolic value: " + ExpectedBPDiastolic, "Blood Pressure Diastolic value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Blood Pressure Diastolic value", "Blood Pressure Diastolic value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Blood Pressure Diastolic value: " + ExpectedBPDiastolic, "Blood Pressure Diastolic value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -265,10 +280,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateHeartRate(int row, String ExpectedHeartRate) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_HeartRate, ExpectedHeartRate, "Heart Rate Value is");
-				WriteTestReportinExcelWithScreenShot("Verify Heart Rate value", "Heart Rate value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Heart Rate value: " + ExpectedHeartRate, "Heart Rate value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Heart Rate value", "Heart Rate value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Heart Rate value: " + ExpectedHeartRate, "Heart Rate value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -277,10 +292,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateTextField1(int row, String ExpectedTextField1) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_TextField1, ExpectedTextField1, "Text Field 1 Value is ");
-				WriteTestReportinExcelWithScreenShot("Verify Text Field 1 value", "Text Field 1 value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Text Field 1 value: " + ExpectedTextField1, "Text Field 1 value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Text Field 1 value", "Text Field 1 value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Text Field 1 value: " + ExpectedTextField1, "Text Field 1 value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -289,10 +304,71 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateNumberField1(int row, String ExpectedNumberField1) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_NumberField1, ExpectedNumberField1, "Number Field 1 Value is ");
-				WriteTestReportinExcelWithScreenShot("Verify Number Field 1 value", "Number Field 1 value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Number Field 1 value: " + ExpectedNumberField1, "Number Field 1 value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Number Field 1 value", "Number Field 1 value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Number Field 1 value: " + ExpectedNumberField1, "Number Field 1 value should be verified successfully", "FAIL", row);
+			}
+			
+
+		}
+		
+		public void ValidateFileField1(int row, String ExpectedFileField1) throws IOException, BiffException {
+			try {
+				verifyTextEqual(readonly_FileField1, ExpectedFileField1, "Number Field 1 Value is ");
+				WriteTestReportinExcel("Verify File Field 1 value: " + ExpectedFileField1, "File Field 1 value should be verified successfully", "PASS", row);
+			} catch (Exception e) {
+				// TODO: handle exception
+				WriteTestReportinExcelWithScreenShot("Verify File Field 1 value: " + ExpectedFileField1, "File Field 1 value should be verified successfully", "FAIL", row);
+			}
+			
+
+		}
+		
+		public void ValidateDateField1(int row, String ExpectedDateField1) throws IOException, BiffException {
+			try {
+				verifyTextEqual(readonly_DateField1, ExpectedDateField1, "Date Field 1 Value is ");
+				WriteTestReportinExcel("Verify Date Field 1 value: " + ExpectedDateField1, "Date Field 1 value should be verified successfully", "PASS", row);
+			} catch (Exception e) {
+				// TODO: handle exception
+				WriteTestReportinExcelWithScreenShot("Verify Date Field 1 value: " + ExpectedDateField1, "Date Field 1 value should be verified successfully", "FAIL", row);
+			}
+			
+
+		}
+		
+		
+		public void ValidateTimeField1(int row, String ExpectedTimeField1) throws IOException, BiffException {
+			try {
+				verifyTextEqual(readonly_TimeField1, ExpectedTimeField1, "Time Field 1 Value is ");
+				WriteTestReportinExcel("Verify Time Field 1 value: " + ExpectedTimeField1, "Time Field 1 value should be verified successfully", "PASS", row);
+			} catch (Exception e) {
+				// TODO: handle exception
+				WriteTestReportinExcelWithScreenShot("Verify Time Field 1 value: " + ExpectedTimeField1, "Time Field 1 value should be verified successfully", "FAIL", row);
+			}
+			
+
+		}
+		
+		public void ValidateDescriptiveText1(int row, String ExpectedDescriptiveText1) throws IOException, BiffException {
+			try {
+				verifyTextEqual(readonly_DescriptiveText1, ExpectedDescriptiveText1, "Descriptive Text 1 Value is ");
+				WriteTestReportinExcel("Verify Descriptive Text 1 value: " + ExpectedDescriptiveText1, "Descriptive Text 1 value should be verified successfully", "PASS", row);
+			} catch (Exception e) {
+				// TODO: handle exception
+				WriteTestReportinExcelWithScreenShot("Verify Descriptive Text 1 value: " + ExpectedDescriptiveText1, "Descriptive Text 1 value should be verified successfully", "FAIL", row);
+			}
+			
+
+		}
+		
+		public void ValidateDropDown1(int row, String ExpectedDropDownField1) throws IOException, BiffException {
+			try {
+				verifyTextEqual(readonly_Dropdown1, ExpectedDropDownField1, "Drop Down 1 Value is ");
+				WriteTestReportinExcel("Verify Drop Down 1 value: " + ExpectedDropDownField1, "Drop Down 1 value should be verified successfully", "PASS", row);
+			} catch (Exception e) {
+				// TODO: handle exception
+				WriteTestReportinExcelWithScreenShot("Verify Drop Down 1 value: " + ExpectedDropDownField1, "Drop Down 1 value should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -301,22 +377,22 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateRadio1(int row, String ExpectedRadio1) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_Radio1, ExpectedRadio1, "Radio 1 Value is ");
-				WriteTestReportinExcelWithScreenShot("Verify Radio 1 value", "Radio 1 value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Radio 1 value: " + ExpectedRadio1, "Radio 1 value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Radio 1 value", "Radio 1 value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Radio 1 value: " + ExpectedRadio1, "Radio 1 value should be verified successfully", "FAIL", row);
 			}
 			
 
 		}
 		
-		public void ValidateRecordSubmittedMsg(int row, String ExpectedWorkOrdersID) throws IOException, BiffException {
+		public void ValidateRecordSubmittedMsg(int row, String ExpectedRecordSubmitted) throws IOException, BiffException {
 			try {
-				verifyTextEqual(readonly_RecordSubmittedMsg, ExpectedWorkOrdersID, "Validate Record Submitted Message");
-				WriteTestReportinExcelWithScreenShot("Verify Record Submitted Message", "Record Submitted Message should be verified successfully", "PASS", row);
+				verifyTextEqual(readonly_RecordSubmittedMsg, ExpectedRecordSubmitted, "Validate Record Submitted Message");
+				WriteTestReportinExcelWithScreenShot("Verify Record Submitted Message: "+ ExpectedRecordSubmitted, "Record Submitted Message should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Record Submitted Message", "Record Submitted Message should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Record Submitted Message: " + ExpectedRecordSubmitted, "Record Submitted Message should be verified successfully", "FAIL", row);
 			}
 			
 
@@ -325,10 +401,10 @@ public class AdminUser_Records extends BasePages {
 		public void ValidateAuditTrailStatus(int row, String ExpectedAuditTrailStatus) throws IOException, BiffException {
 			try {
 				verifyTextEqual(readonly_AuditTrailStatus, ExpectedAuditTrailStatus, "Validate Audit Trail Status");
-				WriteTestReportinExcelWithScreenShot("Verify Audit Trail Status value", "Audit Trail Status value should be verified successfully", "PASS", row);
+				WriteTestReportinExcel("Verify Audit Trail Status value: " + ExpectedAuditTrailStatus, "Audit Trail Status value should be verified successfully", "PASS", row);
 			} catch (Exception e) {
 				// TODO: handle exception
-				WriteTestReportinExcelWithScreenShot("Verify Audit Trail Status value", "Audit Trail Status value should be verified successfully", "FAIL", row);
+				WriteTestReportinExcelWithScreenShot("Verify Audit Trail Status value: " + ExpectedAuditTrailStatus, "Audit Trail Status value should be verified successfully", "FAIL", row);
 			}
 			
 

@@ -45,6 +45,10 @@ public class GoClinical_Admin_Records_PageSteps {
 		adminUser_Records.ValidateStudyVisit(row, readwritetoExcel.Getdata("Visit", row).trim());
 		adminUser_Records.ValidateTextField1(row, readwritetoExcel.Getdata("TEXT FIELD 1", row).trim());
 		adminUser_Records.ValidateNumberField1(row, readwritetoExcel.Getdata("NUMBER FIELD 1", row).trim());
+		adminUser_Records.ValidateFileField1(row, readwritetoExcel.Getdata("Expected File Field 1", row).trim());
+		adminUser_Records.ValidateDateField1(row, readwritetoExcel.Getdata("Expected Date Field 1", row).trim());
+		adminUser_Records.ValidateTimeField1(row, readwritetoExcel.Getdata("Expected Time Field 1", row).trim());
+		adminUser_Records.ValidateDropDown1(row, readwritetoExcel.Getdata("DROP DOWN 1", row).trim());
 		adminUser_Records.ValidateRadio1(row, readwritetoExcel.Getdata("RADIO 1", row).trim());
 		adminUser_Records.EnterPassword(row);
 		adminUser_Records.ClickSendToStudySite(row);

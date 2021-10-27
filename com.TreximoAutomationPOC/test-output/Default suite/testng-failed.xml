@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ExecutionClasses.Onetest">
+      <class name="ExecutionClasses.FullTestSuiteScenario">
         <methods>
           <include name="launchBrowser"/>
-          <include name="AdminUserNewWorkOrder"/>
           <include name="CloseBroswer"/>
+          <include name="GoClinical_WorkOrder_TestSuite"/>
         </methods>
-      </class> <!-- ExecutionClasses.Onetest -->
+      </class> <!-- ExecutionClasses.FullTestSuiteScenario -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

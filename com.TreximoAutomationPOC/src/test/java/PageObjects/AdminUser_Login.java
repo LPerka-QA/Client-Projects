@@ -34,13 +34,13 @@ public class AdminUser_Login extends BasePages {
 	// Each Object Method
 
 	public void EnterUserEmail(int row) throws IOException, BiffException {
-		try {
-				enterText(txtUserEmail, "Admin User Email", GoClinicTest.TestSettingsObjects.getProperty("AdminUserEmail"));
-				
-				WriteTestReportinExcel("Enter Admin User Email", "Admin User Email should be entered successfully", "PASS", row);
+		String UserEmail = GoClinicTest.TestSettingsObjects.getProperty("AdminUserEmail");
+		try {			
+				enterText(txtUserEmail, "Admin User Email", UserEmail);				
+				WriteTestReportinExcel("Enter Admin User Email: " + UserEmail, "Admin User Email should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 	// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Enter Admin User Email", "Admin User Email should be entered successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Enter Admin User Email: " + UserEmail, "Admin User Email should be entered successfully", "FAIL", row);
 		}
 		
 	}
@@ -75,10 +75,10 @@ public class AdminUser_Login extends BasePages {
 		try {
 			verifyTextEqual(readonly_SignInSuccessMsg, ExpectedSignInSuccessMsg, "Validate Admin User Sign In Message");
 			
-			WriteTestReportinExcelWithScreenShot("Verify SIGN IN message", "SIGN IN message should be verified successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Verify SIGN IN message: " + ExpectedSignInSuccessMsg, "SIGN IN message should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify SIGN IN message", "SIGN IN message should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify SIGN IN message: " + ExpectedSignInSuccessMsg, "SIGN IN message should be verified successfully", "FAIL", row);
 		}
 		
 
@@ -88,23 +88,22 @@ public class AdminUser_Login extends BasePages {
 		try {			
 			verifyCorrectPageHeading(readonly_AdminHomePageMsg, ExpectedAdminHomePageMsg);
 			
-			WriteTestReportinExcel("Verify Admin Home Page header", "Admin Home Page Header should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Admin Home Page header: " + ExpectedAdminHomePageMsg, "Admin Home Page Header should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Admin Home Page header", "Admin Home Page Header should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Admin Home Page header: " + ExpectedAdminHomePageMsg, "Admin Home Page Header should be verified successfully", "FAIL", row);
 		}
 		
 	}
 	
 	public void LaunchURL(int row) throws IOException, BiffException {		
-		try {
-			
-			driver.get(GoClinicTest.TestSettingsObjects.getProperty("URL"));
-			
-			WriteTestReportinExcelWithScreenShot("Enter Application URL", "Application URL should be entered successfully", "PASS", row);
+		String URL = GoClinicTest.TestSettingsObjects.getProperty("URL");
+		try {			
+			driver.get(URL);			
+			WriteTestReportinExcelWithScreenShot("Enter Application URL: " + URL, "Application URL should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Enter Application URL", "Application URL should be entered successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Enter Application URL: " + URL, "Application URL should be entered successfully", "FAIL", row);
 		}
 	}
 	

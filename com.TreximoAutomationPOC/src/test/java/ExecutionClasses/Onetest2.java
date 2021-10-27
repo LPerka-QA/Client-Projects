@@ -1,6 +1,7 @@
 package ExecutionClasses;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -42,7 +43,7 @@ public class Onetest2 {
 	}
 
 	@Test
-	public void NurseUserMYWorkOrdersAndRecords() throws BiffException, IOException, InterruptedException {
+	public void NurseUserMYWorkOrdersAndRecords() throws BiffException, IOException, InterruptedException, ParseException {
 		methodname= new Object(){}.getClass().getEnclosingMethod().getName();
 		TestMethodName = methodname.toString();
 		for (int row = 1; row <= GoClinicalNursePageSteps.ExcelCount()-1; row++) {

@@ -1,6 +1,8 @@
 package ExecutionClasses;
 
 import java.io.IOException;
+import java.text.ParseException;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -33,40 +35,39 @@ public class FullTestSuiteScenario {
 		ReportingPages = new BasePages(GoClinicTest.HTMLReportPath, GoClinicTest.CurrentPageTestCaseName);
 	}
 
-	@Test(priority=0)
-	public void AdminUserNewWorkOrder() throws BiffException, IOException, InterruptedException {
+	@Test
+	public void GoClinical_WorkOrder_TestSuite() throws BiffException, IOException, InterruptedException, ParseException {
 		methodname= new Object(){}.getClass().getEnclosingMethod().getName();
 		TestMethodName = methodname.toString();
 		for (int row = 1; row <=GoClinicalAdminPageSteps.ExcelCount()-1; row++) {
+			
+			//Admin User - New Work Order Test Case
 			GoClinicalAdminPageSteps.LaunchUrl(row);
 			GoClinicalAdminPageSteps.Login(row);
 			GoClinicalAdminPageSteps.CreateNewWorkOrderRecord(row);
 			GoClinicalAdminPageSteps.Logout(row);
-		}
-	}
-	
-	@Test(priority=1)
-	public void NurseUserMYWorkOrdersAndRecords() throws BiffException, IOException, InterruptedException {
-		methodname= new Object(){}.getClass().getEnclosingMethod().getName();
-		TestMethodName = methodname.toString();
-		for (int row = 1; row <=GoClinicalAdminPageSteps.ExcelCount()-1; row++) {
+			
+			
+			
+			//Nurse User - My Work Order Test Case
 			GoClinicalNursePageSteps.Login(row);
 			GoClinicalNursePageSteps.CreateWorkOrderAutomationTestingRecord(row);
 			GoClinicalNursePageSteps.ReviewRecords(row);
 			GoClinicalNursePageSteps.Logout(row);
-			}			
+			
+			
+			
+			//Admin User - Submit Records Test Case
+			GoClinicalNursePageSteps.Login(row);
+			GoClinicalNursePageSteps.CreateWorkOrderAutomationTestingRecord(row);
+			GoClinicalNursePageSteps.ReviewRecords(row);
+			GoClinicalNursePageSteps.Logout(row);
+			
+			
 		}
+	}
 	
-	@Test(priority=2)
-	public void AdminUserSubmitRecords() throws BiffException, IOException, InterruptedException {
-		methodname= new Object(){}.getClass().getEnclosingMethod().getName();
-		TestMethodName = methodname.toString();
-		for (int row = 1; row <=GoClinicalAdminPageSteps.ExcelCount()-1; row++) {
-			GoClinicalAdminRecordsPageSteps.Login(row);
-			GoClinicalAdminRecordsPageSteps.ReviewAndSubmitRecords(row);
-			GoClinicalAdminRecordsPageSteps.Logout(row);
-			}
-		}
+	
 	
 	@AfterTest
 	public static void CloseBroswer() throws IOException {

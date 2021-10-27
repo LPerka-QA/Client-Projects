@@ -1,6 +1,9 @@
 package Steps;
 
 import java.io.IOException;
+import java.text.ParseException;
+
+import com.Utils.BasePages;
 import com.Utils.ReadWriteDatatoExcel;
 //import PageObjects.GoClinical_AdminUser_Menu;
 import PageObjects.GoClinical_NurseUser_Menu;
@@ -28,7 +31,7 @@ public class GoClinical_Nurse_MyWorkOrdersAndRecords_PageSteps {
 		nurseUser_Login.ValidateMyWorkOrdersPageMsg(row, readwritetoExcel.Getdata("Expected Nurse Home Page", row).trim());
 	}
 	
-	public void CreateWorkOrderAutomationTestingRecord(int row) throws IOException, InterruptedException, BiffException {
+	public void CreateWorkOrderAutomationTestingRecord(int row) throws IOException, InterruptedException, BiffException, ParseException {
 		nurseUser_MyWorkOrders_AutomationTesting.ClickMyWrkOrdrLtstRcrd(row,readwritetoExcel.Getdata("Work Order ID", row).trim());
 		nurseUser_MyWorkOrders_AutomationTesting.ValidateAutoTestingForm1Header(row, readwritetoExcel.Getdata("Expected Auto Testing Form1 Header", row).trim());
 		nurseUser_MyWorkOrders_AutomationTesting.ValidatePatientID(row, readwritetoExcel.Getdata("Patient ID", row).trim());
@@ -36,6 +39,8 @@ public class GoClinical_Nurse_MyWorkOrdersAndRecords_PageSteps {
 		nurseUser_MyWorkOrders_AutomationTesting.Enter_NumberField1(row,readwritetoExcel.Getdata("NUMBER FIELD 1", row).trim());
 		nurseUser_MyWorkOrders_AutomationTesting.UploadFile(row);
 		nurseUser_MyWorkOrders_AutomationTesting.Enter_DateField1(row, readwritetoExcel.Getdata("DATE FIELD 1", row).trim());
+		readwritetoExcel.setData("Expected Date Field 1", row, BasePages.TreximoDateField1(readwritetoExcel.Getdata("DATE FIELD 1", row).trim()));
+		readwritetoExcel.setData("Expected Time Field 1", row, BasePages.TreximoTimeField1(readwritetoExcel.Getdata("TIME FIELD 1", row).trim()));
 		nurseUser_MyWorkOrders_AutomationTesting.Enter_TimeField1(row, readwritetoExcel.Getdata("TIME FIELD 1", row).trim());
 		nurseUser_MyWorkOrders_AutomationTesting.SelectDropdown1(row,readwritetoExcel.Getdata("DROP DOWN 1", row).trim());
 		nurseUser_MyWorkOrders_AutomationTesting.ClickRadio1(row, readwritetoExcel.Getdata("RADIO 1", row).trim());

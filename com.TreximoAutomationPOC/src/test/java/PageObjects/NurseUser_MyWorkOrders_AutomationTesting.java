@@ -79,7 +79,7 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 		try {
 			scrollElementIntoView(lnk_MyWrkOrdrsLtstRcrd(row, WorkOrder));
 			clickOnLink(lnk_MyWrkOrdrsLtstRcrd(row, WorkOrder), "Latest Work Order");
-			WriteTestReportinExcel("Click My Work Order Latest Record link", "My Work Order Latest Record link should be clicked successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Click My Work Order Latest Record link", "My Work Order Latest Record link should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Click My Work Order Latest Record link", "My Work Order Latest Record link should be clicked successfully", "FAIL", row);
@@ -90,10 +90,10 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void Enter_TextField1(int row, String TextField1) throws IOException, BiffException {
 		try {
 			enterText(txt_TextField1, "TEXT FIELD 1", TextField1);
-			WriteTestReportinExcel("Enter TEXT FIELD 1", "TEXT FIELD 1 should be entered successfully", "PASS", row);
+			WriteTestReportinExcel("Enter TEXT FIELD 1: " + TextField1, "TEXT FIELD 1 should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Enter TEXT FIELD 1", "TEXT FIELD 1 should be entered successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Enter TEXT FIELD 1: " + TextField1, "TEXT FIELD 1 should be entered successfully", "FAIL", row);
 		}
 		
 	}
@@ -101,34 +101,37 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void Enter_NumberField1(int row, String NumberField1) throws IOException, BiffException {
 		try {
 			enterText(txt_NumberField1, "NUMBER FIELD 1", NumberField1);
-			WriteTestReportinExcel("Enter NUMBER FIELD 1", "NUMBER FIELD 1 should be entered successfully", "PASS", row);
+			WriteTestReportinExcel("Enter NUMBER FIELD 1: " + NumberField1, "NUMBER FIELD 1 should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Enter NUMBER FIELD 1", "NUMBER FIELD 1 should be entered successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Enter NUMBER FIELD 1: " + NumberField1, "NUMBER FIELD 1 should be entered successfully", "FAIL", row);
 		}
 		
 	}
 
 	public void UploadFile(int row) throws IOException, BiffException {
+		String FilePath = System.getProperty("user.dir") + "\\Resources\\TestData\\File Upload Testing 01.png";
 		try {
 			// click on ‘Choose file’ to upload the desired file
-			enterText(txt_FileField1, "File Field 1",
-					System.getProperty("user.dir") + "\\Resources\\TestData\\File Upload Testing 01.png");
-			WriteTestReportinExcel("Select UPLOAD FILE", "Selected UPLOAD FILE should be uploaded successfully", "PASS", row);
+			enterText(txt_FileField1, "File Field 1", FilePath);
+			WriteTestReportinExcel("Select UPLOAD FILE: " + FilePath, "Selected UPLOAD FILE should be uploaded successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Select UPLOAD FILE", "Selected UPLOAD FILE should be uploaded successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Select UPLOAD FILE: " + FilePath, "Selected UPLOAD FILE should be uploaded successfully", "FAIL", row);
 		}
 		
 	}
 	
 	public void Enter_DateField1(int row, String DateField1) throws IOException, InterruptedException, BiffException {
 		try {
+			clickOnButton(txt_DateField1, "Date Picker icon");
+			Thread.sleep(5000);
 			enterTextWithoutClearing(txt_DateField1, "DATE FIELD 1", DateField1);
-			WriteTestReportinExcel("Enter DATE FIELD 1", "DATE FIELD 1 should be entered successfully", "PASS", row);
+			Thread.sleep(5000);
+			WriteTestReportinExcelWithScreenShot("Enter DATE FIELD 1: " + DateField1, "DATE FIELD 1 should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Enter DATE FIELD 1", "DATE FIELD 1 should be entered successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Enter DATE FIELD 1: " + DateField1, "DATE FIELD 1 should be entered successfully", "FAIL", row);
 		}
 		
 	}
@@ -136,22 +139,25 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void Enter_TimeField1(int row, String TimeField1) throws IOException, BiffException {
 		try {
 			scrollElementIntoView(txt_TimeField1);
+			clickOnButton(txt_TimeField1, "Date Picker icon");
+			Thread.sleep(5000);
+			
 			enterTextWithoutClearing(txt_TimeField1, "TIME FIELD 1", TimeField1);
-			WriteTestReportinExcelWithScreenShot("Enter TIME FIELD 1", "TIME FIELD 1 should be entered successfully", "PASS", row);
+			WriteTestReportinExcel("Enter TIME FIELD 1: " + TimeField1, "TIME FIELD 1 should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Enter TIME FIELD 1", "TIME FIELD 1 should be entered successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Enter TIME FIELD 1: " + TimeField1, "TIME FIELD 1 should be entered successfully", "FAIL", row);
 		}
 		
 	}
 
 	public void SelectDropdown1(int row, String Dropdown1Value) throws IOException, InterruptedException, BiffException {
 		try {
-			selectByText(dpd_Dropdown1, "DROP DOWN 1", Dropdown1Value);
-			WriteTestReportinExcel("Select DROP DOWN 1 value", "DROP DOWN 1 value should be selected successfully", "PASS", row);
+			selectByValue(dpd_Dropdown1, "DROP DOWN 1", Dropdown1Value);
+			WriteTestReportinExcel("Select DROP DOWN 1 value: " + Dropdown1Value, "DROP DOWN 1 value should be selected successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Select DROP DOWN 1 value", "DROP DOWN 1 value should be selected successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Select DROP DOWN 1 value: " + Dropdown1Value, "DROP DOWN 1 value should be selected successfully", "FAIL", row);
 		}
 		
 	}
@@ -159,10 +165,10 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void ClickRadio1(int row, String Radio1) throws IOException, BiffException {
 		try {
 			clickOnButton(rdbtn_Radio1(row, Radio1), "Radio1 Yes");
-			WriteTestReportinExcel("Click Radio1 - Yes", "Radio1 - Yes should be clicked successfully", "PASS", row);
+			WriteTestReportinExcel("Click Radio1: " + Radio1, "Radio1 - Yes should be clicked successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Click Radio1 - Yes", "Radio1 - Yes button should be clicked successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Click Radio1: " + Radio1, "Radio1 - Yes button should be clicked successfully", "FAIL", row);
 		}
 		
 	}
@@ -214,10 +220,10 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void ValidateAutoTestingForm1Header(int row, String ExpectedAutoTestingForm1Header) throws IOException, BiffException {
 		try {
 			verifyCorrectPageHeading(readonly_AutoTestingForm1Header, ExpectedAutoTestingForm1Header);
-			WriteTestReportinExcelWithScreenShot("Verify AutoTestingForm1 header", "AutoTestingForm1 header should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify AutoTestingForm1 header: " + ExpectedAutoTestingForm1Header, "AutoTestingForm1 header should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify AutoTestingForm1 header", "AutoTestingForm1 header should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify AutoTestingForm1 header: " + ExpectedAutoTestingForm1Header, "AutoTestingForm1 header should be verified successfully", "FAIL", row);
 		}
 		
 
@@ -226,10 +232,10 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void ValidatePatientID(int row, String ExpectedPatientID) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_PatientID, ExpectedPatientID, "Validate Patient ID");
-			WriteTestReportinExcelWithScreenShot("Verify Patient ID value", "Patient ID value should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Patient ID value: " + ExpectedPatientID, "Patient ID value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Patient ID value", "Patient ID value should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Patient ID value: " + ExpectedPatientID, "Patient ID value should be verified successfully", "FAIL", row);
 		}
 		
 
@@ -238,10 +244,10 @@ public class NurseUser_MyWorkOrders_AutomationTesting extends BasePages {
 	public void ValidateRecordSubmitted(int row, String ExpectedRecordSubmitted) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_RecordSubmitted, ExpectedRecordSubmitted, "Record Submitted Message");
-			WriteTestReportinExcelWithScreenShot("Verify Notify message", "Notify message should be verified successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Verify Notify message: " + ExpectedRecordSubmitted, "Notify message should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Notify message", "Notify message should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Notify message: " + ExpectedRecordSubmitted, "Notify message should be verified successfully", "FAIL", row);
 		}
 		
 

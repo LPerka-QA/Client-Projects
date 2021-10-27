@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.Utils.BasePages;
+import com.Utils.ReadWriteDatatoExcel;
+
 import jxl.read.biff.BiffException;
 
 public class AdminUser_NewWorkOrders extends BasePages {
@@ -63,7 +65,7 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	@FindBy(xpath = "//a[contains(@href,'/records/new') and text()='(Paper original?)']")
 	public WebElement PaperOriginalLnk;
 	
-	@FindBy(xpath = "//input[@value='Send Work Order to Lokendernath-rvsp Perka' and @type='submit']")
+	@FindBy(xpath = "//input[contains(@value, 'Send Work Order to ') and @type='submit']")
 	public WebElement SendWorktoUserBtn;
 	
 	@FindBy(xpath = "//a[contains(@href,'/work_orders/') and text()='Edit']")
@@ -83,10 +85,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void SelectSponsor(int row, String SponsorValue) throws IOException, InterruptedException, BiffException {
 		try {
 			selectByText(dpd_Sponsor, "Sponsor" , SponsorValue);
-			WriteTestReportinExcel("Select Sponsor dropdown value", "Sponsor dropdown value should be selected successfully", "PASS", row);
+			WriteTestReportinExcel("Select Sponsor dropdown value: " + SponsorValue, "Sponsor dropdown value should be selected successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Select Sponsor dropdown value", "Sponsor dropdown value should be selected successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Select Sponsor dropdown value: " + SponsorValue, "Sponsor dropdown value should be selected successfully", "FAIL", row);
 		}
 				
 	}	
@@ -94,10 +96,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void SelectProtocol(int row, String ProtocolValue) throws IOException, InterruptedException, BiffException  {
 		try {
 			selectByText(dpd_Protocol, "Protocol", ProtocolValue);
-			WriteTestReportinExcel("Select Protocol dropdown value", "Protocol dropdown value should be selected successfully", "PASS", row);
+			WriteTestReportinExcel("Select Protocol dropdown value: " + ProtocolValue, "Protocol dropdown value should be selected successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Select Protocol dropdown value", "Protocol dropdown value should be selected successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Select Protocol dropdown value: " + ProtocolValue, "Protocol dropdown value should be selected successfully", "FAIL", row);
 		}
 		
 	}	
@@ -105,10 +107,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void EnterPatientID(int row, String PatientIDValue) throws IOException, BiffException {
 		try {
 			enterText(txt_PatientID, "Patient ID", PatientIDValue);
-			WriteTestReportinExcel("Enter Patient ID", "Patient ID should be entered successfully", "PASS", row);
+			WriteTestReportinExcel("Enter Patient ID: " + PatientIDValue, "Patient ID should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Enter Patient ID", "Patient ID should be entered successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Enter Patient ID: "+ PatientIDValue, "Patient ID should be entered successfully", "FAIL", row);
 		}
 		
 	}
@@ -116,10 +118,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void SelectVisit(int row, String VisitValue) throws IOException, BiffException {
 		try {
 			selectByText(dpd_Visit, "Visit", VisitValue);
-			WriteTestReportinExcel("Select Visit dropdown value", "Visit dropdown value should be selected successfully", "PASS", row);
+			WriteTestReportinExcel("Select Visit dropdown value: " + VisitValue, "Visit dropdown value should be selected successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Select Visit dropdown value", "Visit dropdown value should be selected successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Select Visit dropdown value: " + VisitValue, "Visit dropdown value should be selected successfully", "FAIL", row);
 		}
 		
 	}	
@@ -127,10 +129,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void EnterSrvcePrvdrEmail_RVSP(int row, String ServiceProviderEmail_RVSPValue) throws IOException, BiffException {
 		try {
 			enterText(txt_SrvcePrvdrEmail_RVSP, "Service Provider Email (RVSP)", ServiceProviderEmail_RVSPValue);
-			WriteTestReportinExcel("Enter Service Provider Email (RVSP)", "Service Provider Email (RVSP) should be entered successfully", "PASS", row);
+			WriteTestReportinExcel("Enter Service Provider Email (RVSP): " + ServiceProviderEmail_RVSPValue, "Service Provider Email (RVSP) should be entered successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Enter Service Provider Email (RVSP)", "Service Provider Email (RVSP) should be entered successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Enter Service Provider Email (RVSP): " + ServiceProviderEmail_RVSPValue, "Service Provider Email (RVSP) should be entered successfully", "FAIL", row);
 		}
 		
 	}
@@ -138,10 +140,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void SelectSndRcrdTo_SiteCntct(int row, String SendRecordtoSiteContactValue) throws IOException, BiffException {
 		try {
 			selectByText(dpd_SndRcrdTo_SiteCntct, "Send Record To (Site Contact)", SendRecordtoSiteContactValue);
-			WriteTestReportinExcelWithScreenShot("Select Send Record To (Site Contact) dropdown value", "Send Record To (Site Contact) dropdown value should be selected successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Select Send Record To (Site Contact) dropdown value: " + SendRecordtoSiteContactValue, "Send Record To (Site Contact) dropdown value should be selected successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Select Send Record To (Site Contact) dropdown value", "Send Record To (Site Contact) dropdown value should be selected successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Select Send Record To (Site Contact) dropdown value: " + SendRecordtoSiteContactValue, "Send Record To (Site Contact) dropdown value should be selected successfully", "FAIL", row);
 		}
 		
 	}
@@ -180,10 +182,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidateCrtWrkOrdrSuccessMsg(int row, String ExpectedCrtWrkOrdrSuccessMsg) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_WrkOrdrCrteSuccessMsg, ExpectedCrtWrkOrdrSuccessMsg, "New Work Order with PatientID " + PatientIDValue);
-			WriteTestReportinExcelWithScreenShot("Verify Created Work Order message", "Created Work Order message should be verified successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Verify Created Work Order message: " + ExpectedCrtWrkOrdrSuccessMsg, "Created Work Order message should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Created Work Order message", "Created Work Order message should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Created Work Order message: " + ExpectedCrtWrkOrdrSuccessMsg, "Created Work Order message should be verified successfully", "FAIL", row);
 		}
 		
 	}
@@ -193,10 +195,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 		try {
 			WorkOrder= readonly_WorkOrderNumber.getText();		
 			//data.setData("Work Order Number", row, WorkOrderRecordNumber);
-			WriteTestReportinExcel("Get Created Work Order Number", "Created Work Order Number should be retrieved successfully", "PASS", row);
+			WriteTestReportinExcel("Get Created Work Order Number: " + WorkOrder, "Created Work Order Number should be retrieved successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Get Created Work Order Number", "Created Work Order Number should be retrieved successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Get Created Work Order Number: " + WorkOrder, "Created Work Order Number should be retrieved successfully", "FAIL", row);
 		}		
 		return WorkOrder;		
 	}
@@ -206,10 +208,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 		try {
 			String WorkOrder = readonly_WorkOrderNumber.getText();
 			WorkOrderNumber = WorkOrder.substring(11);
-			WriteTestReportinExcel("Get Created Work Order Number", "Created Work Order Number should be retrieved successfully", "PASS", row);
+			WriteTestReportinExcel("Get Created Work Order Number: " + WorkOrderNumber, "Created Work Order Number should be retrieved successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Get Created Work Order Number", "Created Work Order Number should be retrieved successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Get Created Work Order Number: " + WorkOrderNumber, "Created Work Order Number should be retrieved successfully", "FAIL", row);
 		}		
 		return WorkOrderNumber;		
 	}
@@ -219,10 +221,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 		try {
 			ActiveStatus = readonly_ActiveStatus.getText();		
 			//data.setData("Active Status", row, ActiveStatus);
-			WriteTestReportinExcel("Get Active Status", "Active Status should be retrieved successfully", "PASS", row);
+			WriteTestReportinExcel("Get Active Status: " + ActiveStatus, "Active Status should be retrieved successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Get Active Status", "Active Status should be retrieved successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Get Active Status: " + ActiveStatus, "Active Status should be retrieved successfully", "FAIL", row);
 		}
 		
 		return ActiveStatus;
@@ -234,10 +236,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 		try {
 			 Status = readonly_Status.getText();		
 			//data.setData("Status", row, Status);
-			WriteTestReportinExcel("Get Status", "Status should be retrieved successfully", "PASS", row);
+			WriteTestReportinExcel("Get Status: " + Status, "Status should be retrieved successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Get Status", "Status should be retrieved successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Get Status: " + Status, "Status should be retrieved successfully", "FAIL", row);
 		}		
 		return Status;
 	}
@@ -245,10 +247,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidatePatientID(int row, String PatientId) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_PatientID, PatientId, "PatientID");
-			WriteTestReportinExcel("Verify Patient ID value", "PatientID value should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Patient ID value: " + PatientId, "PatientID value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify PatientID value", "PatientID value should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify PatientID value: " + PatientId, "PatientID value should be verified successfully", "FAIL", row);
 		}
 		
 	}
@@ -256,10 +258,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidateProtocol(int row, String ExpectedProtocol) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_Protocol, ExpectedProtocol, "Protocol");
-			WriteTestReportinExcel("Verify Protocol value", "Protocol value should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Protocol value: " + ExpectedProtocol, "Protocol value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Protocol value", "Protocol value should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Protocol value: " + ExpectedProtocol, "Protocol value should be verified successfully", "FAIL", row);
 		}
 		
 	}
@@ -267,10 +269,10 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidateVisit(int row, String ExpectedVisit) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_Visit, ExpectedVisit, "Visit");
-			WriteTestReportinExcel("Verify Visit value", "Visit value should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Visit value: " + ExpectedVisit, "Visit value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Visit value", "Visit value should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Visit value: " + ExpectedVisit, "Visit value should be verified successfully", "FAIL", row);
 		}
 		
 	}
@@ -278,11 +280,11 @@ public class AdminUser_NewWorkOrders extends BasePages {
 	public void ValidateSrvcePrvdr(int row, String ExpectedSrvcePrvdrEmail) throws IOException, BiffException {
 		try {
 			verifyTextEqual(readonly_ServiceProvider, ExpectedSrvcePrvdrEmail, "Service Provider Email RVSP");
-			WriteTestReportinExcel("Verify Service Provider Email RVSP value",
+			WriteTestReportinExcel("Verify Service Provider Email RVSP value: " + ExpectedSrvcePrvdrEmail,
 					"Service Provider Email RVSP value should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Service Provider Email RVSP value", "Service Provider Email RVSP value should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Service Provider Email RVSP value: " + ExpectedSrvcePrvdrEmail, "Service Provider Email RVSP value should be verified successfully", "FAIL", row);
 		}
 		
 	}
@@ -304,11 +306,11 @@ public class AdminUser_NewWorkOrders extends BasePages {
 		try {
 			if(readonly_NotifyMsg.getText().contains(ExpectedSrvcePrvdrEmail)== true)
 			{
-			WriteTestReportinExcelWithScreenShot("Verify Notify message", "Notify message should be verified successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Verify Notify message: " + ExpectedSrvcePrvdrEmail, "Notify message should be verified successfully", "PASS", row);
 			}			
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Notify message", "Notify message should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Notify message: " + ExpectedSrvcePrvdrEmail, "Notify message should be verified successfully", "FAIL", row);
 		}
 		
 	}

@@ -50,10 +50,10 @@ public class NurseUser_Records extends BasePages {
 	public void ValidateRecordsHeader(int row, String ExpectedRecordsHeader) throws IOException, BiffException {
 		try {
 			verifyCorrectPageHeading(readonly_RecordsHeader, ExpectedRecordsHeader);
-			WriteTestReportinExcelWithScreenShot("Verify Records Header", "Records Header should be verified successfully", "PASS", row);
+			WriteTestReportinExcelWithScreenShot("Verify Records Header: " + ExpectedRecordsHeader, "Records Header should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Verify Records Header", "Records Header should be verified successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Verify Records Header: " + ExpectedRecordsHeader, "Records Header should be verified successfully", "FAIL", row);
 		}		
 
 	}
@@ -63,7 +63,7 @@ public class NurseUser_Records extends BasePages {
 		try {
 			verifyTextEqual(readonly_ValidateLatestRecord(WorkOrder, Protocol, PatientId, Visit),
 					ExpectedLatestRecord, "Validate latest Record");
-			WriteTestReportinExcelWithScreenShot("Verify Latest Record", "Latest Record should be verified successfully", "PASS", row);
+			WriteTestReportinExcel("Verify Latest Record", "Latest Record should be verified successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
 			WriteTestReportinExcelWithScreenShot("Verify Latest Record", "Latest Record should be verified successfully", "FAIL", row);
@@ -78,10 +78,10 @@ public class NurseUser_Records extends BasePages {
 			LatestRecordID = readonly_GetLatestRecord_RecordID(WorkOrder, Protocol, PatientId, Visit).getText();
 			System.out.println(LatestRecordID);
 //			data.setData("Latest Record Created Date", row, LatestRecordCreateDate);
-			WriteTestReportinExcel("Get Latest Record ID", "Latest Record ID should be retrieved successfully", "PASS", row);
+			WriteTestReportinExcel("Get Latest Record ID: " + LatestRecordID, "Latest Record ID should be retrieved successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Get Latest Record ID", "Latest Record ID should be retrieved successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Get Latest Record ID: " + LatestRecordID, "Latest Record ID should be retrieved successfully", "FAIL", row);
 		}
 		
 		return LatestRecordID;
@@ -94,10 +94,10 @@ public class NurseUser_Records extends BasePages {
 			LatestRecordCreateDate = readonly_GetLatestRecord_CreatedDate(WorkOrder, Protocol, PatientId, Visit).getText();
 			System.out.println(LatestRecordCreateDate);
 //			data.setData("Latest Record Created Date", row, LatestRecordCreateDate);
-			WriteTestReportinExcel("Get Latest Record Create Date", "Latest Record Create Date should be retrieved successfully", "PASS", row);
+			WriteTestReportinExcel("Get Latest Record Create Date: " + LatestRecordCreateDate, "Latest Record Create Date should be retrieved successfully", "PASS", row);
 		} catch (Exception e) {
 			// TODO: handle exception
-			WriteTestReportinExcelWithScreenShot("Get Latest Record Create Date", "Latest Record Create Date should be retrieved successfully", "FAIL", row);
+			WriteTestReportinExcelWithScreenShot("Get Latest Record Create Date: " + LatestRecordCreateDate, "Latest Record Create Date should be retrieved successfully", "FAIL", row);
 		}
 		
 		return LatestRecordCreateDate;
